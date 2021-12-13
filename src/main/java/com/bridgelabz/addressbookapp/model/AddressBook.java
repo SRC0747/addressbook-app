@@ -13,8 +13,11 @@ public class AddressBook {
     @Column(name="EMP_ID")
     private int id;
 
-    @Column(name = "NAME", length=25)
-    private String name;
+    @Column(name = "FIRST_NAME", length=25)
+    private String firstName;
+
+    @Column(name = "LAST_NAME", length=25)
+    private String lastName;
 
     @Column(name = "CITY", length=22)
     private String city;
