@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class AddressBookController {
 
@@ -28,6 +30,13 @@ public class AddressBookController {
             @RequestBody AddressBookDTO addressBookDTO) {
         AddressBook addressBookData = addressBookService.addAddressDetails(addressBookDTO);
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data For ", addressBookData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<ResponseDTO> getAddressBookData() {
+        List<AddressBook> addressBookData = addressBookService.getAddressBookData();
+        ResponseDTO responseDTO = new ResponseDTO("Get Call Success", addressBookData);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }

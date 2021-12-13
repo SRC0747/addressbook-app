@@ -7,6 +7,8 @@ import com.bridgelabz.addressbookapp.repository.AddressBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AddressBookService implements IAddressBookService{
 
@@ -23,5 +25,10 @@ public class AddressBookService implements IAddressBookService{
         //BeanUtils.copyProperties(adderesBookDTO, addressBook);
         addressBookRepository.save(addressBook);
         return addressBookRepository.save(addressBook);
+    }
+
+    @Override
+    public List<AddressBook> getAddressBookData() {
+        return addressBookRepository.findAll();
     }
 }
