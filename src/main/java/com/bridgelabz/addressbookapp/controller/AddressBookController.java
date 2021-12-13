@@ -37,11 +37,20 @@ public class AddressBookController {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/get/{empId}")
+    @GetMapping("/get/{addressBookId}")
     public ResponseEntity<ResponseDTO> getAddressBookDataById(
             @PathVariable int addressBookDataId) {
         AddressBook addressBookData = addressBookService.findAddressDetailsById(addressBookDataId);
         ResponseDTO responseDto = new ResponseDTO("Get Call Success For Id", addressBookData);
         return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{addressBookId}")
+    public ResponseEntity<ResponseDTO> updateAddressBookData(
+            @PathVariable int addressBookId,
+            @RequestBody AddressBookDTO addressBookDTO) {
+        String addressBookData = addressBookService.updateAddressBookDataById(addressBookId, addressBookDTO);
+        ResponseDTO responseDTO = new ResponseDTO("Update Employee Payroll Data For ", addressBookData);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 }

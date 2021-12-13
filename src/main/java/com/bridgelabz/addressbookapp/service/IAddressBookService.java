@@ -12,4 +12,6 @@ public interface IAddressBookService {
     public List<AddressBook> getAddressBookData();
 
     public AddressBook findAddressDetailsById(int addressBookId);
+
+    public String updateAddressBookDataById(int addressBookId, AddressBookDTO addressBookDTO);
 }
