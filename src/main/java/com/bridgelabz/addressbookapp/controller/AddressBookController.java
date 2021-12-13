@@ -7,10 +7,7 @@ import com.bridgelabz.addressbookapp.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +35,13 @@ public class AddressBookController {
         List<AddressBook> addressBookData = addressBookService.getAddressBookData();
         ResponseDTO responseDTO = new ResponseDTO("Get Call Success", addressBookData);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/{empId}")
+    public ResponseEntity<ResponseDTO> getAddressBookDataById(
+            @PathVariable int addressBookDataId) {
+        AddressBook addressBookData = addressBookService.findAddressDetailsById(addressBookDataId);
+        ResponseDTO responseDto = new ResponseDTO("Get Call Success For Id", addressBookData);
+        return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
     }
 }

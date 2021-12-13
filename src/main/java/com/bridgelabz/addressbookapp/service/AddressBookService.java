@@ -2,6 +2,7 @@ package com.bridgelabz.addressbookapp.service;
 
 import com.bridgelabz.addressbookapp.builder.AddressBookBuilder;
 import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
+import com.bridgelabz.addressbookapp.exception.CustomException;
 import com.bridgelabz.addressbookapp.model.AddressBook;
 import com.bridgelabz.addressbookapp.repository.AddressBookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,11 @@ public class AddressBookService implements IAddressBookService{
     @Override
     public List<AddressBook> getAddressBookData() {
         return addressBookRepository.findAll();
+    }
+
+    @Override
+    public AddressBook findAddressDetailsById(int addressBookId) {
+        return addressBookRepository.findById(addressBookId).
+                orElseThrow(() -> new CustomException("Employee data not found of this id :" + addressBookId));
     }
 }

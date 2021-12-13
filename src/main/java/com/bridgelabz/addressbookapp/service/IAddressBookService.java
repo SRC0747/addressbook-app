@@ -10,4 +10,6 @@ public interface IAddressBookService {
     public AddressBook addAddressDetails(AddressBookDTO addressBookDTO);
 
     public List<AddressBook> getAddressBookData();
+
+    public AddressBook findAddressDetailsById(int addressBookId);
 }
