@@ -14,6 +14,7 @@ import java.util.List;
 public class AddressBookService implements IAddressBookService{
 
     private static final String ADDRESSBOOK_DETAILS_UPDATED_SUCCESSFULLY = "AddressBook Details are updated successfully.";
+    private static final String ADDRESSBOOK_RECORD_DELETED_SUCCESSFULLY = "AddressBook Details are deleted successfully";
     @Autowired
     private AddressBookRepository addressBookRepository;
 
@@ -46,6 +47,13 @@ public class AddressBookService implements IAddressBookService{
         addressBook = addressBookBuilder.buildAddressBookEntity(addressBookDTO, addressBook);
         addressBookRepository.save(addressBook);
         return ADDRESSBOOK_DETAILS_UPDATED_SUCCESSFULLY;
+    }
+
+    @Override
+    public String deleteAddressBookDataById(int addressBookId) {
+        AddressBook addressBook = findAddressDetailsById(addressBookId);
+        addressBookRepository.deleteById(addressBookId);
+        return ADDRESSBOOK_RECORD_DELETED_SUCCESSFULLY;
     }
 
 }
