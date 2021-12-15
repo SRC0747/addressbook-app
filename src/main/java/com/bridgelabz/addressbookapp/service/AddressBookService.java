@@ -45,6 +45,7 @@ public class AddressBookService implements IAddressBookService{
     public String updateAddressBookDataById(int addressBookId, AddressBookDTO addressBookDTO) {
         AddressBook addressBook = findAddressDetailsById(addressBookId);
         addressBook = addressBookBuilder.buildAddressBookEntity(addressBookDTO, addressBook);
+        System.out.println(addressBook.toString());
         addressBookRepository.save(addressBook);
         return ADDRESSBOOK_DETAILS_UPDATED_SUCCESSFULLY;
     }
