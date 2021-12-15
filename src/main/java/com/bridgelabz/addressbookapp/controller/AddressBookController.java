@@ -23,11 +23,12 @@ public class AddressBookController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDTO> addAddressBookData(
+    public ResponseEntity<String> addAddressBookData(
             @RequestBody AddressBookDTO addressBookDTO) {
-        AddressBook addressBookData = addressBookService.addAddressDetails(addressBookDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data For ", addressBookData);
-        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+        String addressBookData = addressBookService.addAddressDetails(addressBookDTO);
+        ResponseDTO responseDTO = new ResponseDTO("Created Address Book Data For ", addressBookData);
+        //return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>("Created Address Book Data For", HttpStatus.OK);
     }
 
     @GetMapping("/get")
@@ -46,19 +47,21 @@ public class AddressBookController {
     }
 
     @PutMapping("/update/{addressBookId}")
-    public ResponseEntity<ResponseDTO> updateAddressBookData(
+    public ResponseEntity<String> updateAddressBookData(
             @PathVariable int addressBookId,
             @RequestBody AddressBookDTO addressBookDTO) {
         String addressBookData = addressBookService.updateAddressBookDataById(addressBookId, addressBookDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Update Employee Payroll Data For ", addressBookData);
-        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+        ResponseDTO responseDTO = new ResponseDTO("Update AddressBook Data For", addressBookData);
+       // return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+        return new ResponseEntity<>("Update AddressBook Data For", HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{addressBookId}")
-    public ResponseEntity<ResponseDTO> deleteAddressBookDataById(
+    public ResponseEntity<String> deleteAddressBookDataById(
             @PathVariable int addressBookId) {
         addressBookService.deleteAddressBookDataById(addressBookId);
         ResponseDTO responseDto = new ResponseDTO("Deleted Successfully", "deleted id: " + addressBookId);
-        return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
+        //return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
+        return new ResponseEntity<>("Deleted Successfully", HttpStatus.OK);
     }
 }

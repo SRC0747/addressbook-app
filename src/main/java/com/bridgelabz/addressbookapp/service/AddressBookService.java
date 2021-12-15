@@ -22,12 +22,13 @@ public class AddressBookService implements IAddressBookService{
     private AddressBookBuilder addressBookBuilder;
 
     @Override
-    public AddressBook addAddressDetails(AddressBookDTO addressBookDTO) {
+    public String addAddressDetails(AddressBookDTO addressBookDTO) {
         AddressBook addressBook = new AddressBook();
         addressBook = addressBookBuilder.buildAddressBookEntity(addressBookDTO, addressBook);
         //BeanUtils.copyProperties(adderesBookDTO, addressBook);
         addressBookRepository.save(addressBook);
-        return addressBookRepository.save(addressBook);
+        //return addressBookRepository.save(addressBook);
+        return "Added successfully";
     }
 
     @Override

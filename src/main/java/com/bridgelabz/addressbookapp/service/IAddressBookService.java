@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IAddressBookService {
 
-    public AddressBook addAddressDetails(AddressBookDTO addressBookDTO);
+    public String addAddressDetails(AddressBookDTO addressBookDTO);
 
     public List<AddressBook> getAddressBookData();
 
