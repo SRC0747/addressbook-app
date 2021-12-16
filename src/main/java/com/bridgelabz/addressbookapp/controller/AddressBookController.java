@@ -11,6 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Purpose : To demonstrate various HTTP request methods
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 @RestController
 @RequestMapping("/api")
 public class AddressBookController {
@@ -18,11 +26,22 @@ public class AddressBookController {
     @Autowired
     private AddressBookService addressBookService;
 
+    /**
+     * Purpose : This method is used to print the welcome message
+     *
+     * @return welcome message
+     */
     @GetMapping(value = "/welcome")
     public String welcome() {
         return "Welcome to AddressBook App Server.";
     }
 
+    /**
+     * Purpose : This method to add new addressBook data in addressBook service
+     *
+     * @param addressBookDTO defines the input data of addressBook in DTO  format
+     * @return response message if new addressBook data is added
+     */
     @PostMapping("/create")
     public ResponseEntity<String> addAddressBookData(
             @RequestBody AddressBookDTO addressBookDTO) {
@@ -32,6 +51,11 @@ public class AddressBookController {
         return new ResponseEntity<>("Created Address Book Data For", HttpStatus.OK);
     }
 
+    /**
+     * Purpose : This method is used to get list of all the addressBook data added
+     *
+     * @return the list of addressBook details
+     */
     @GetMapping("/get")
     public ResponseEntity<ResponseDTO> getAddressBookData() {
         List<AddressBook> addressBookData = addressBookService.getAddressBookData();
@@ -39,6 +63,12 @@ public class AddressBookController {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    /**
+     * Purpose : This method is used to get the addressBook data by using particular id
+     *
+     * @param addressBookDataId defines addressBook id
+     * @return addressBook data corresponding to the id
+     */
     @GetMapping("/get/{addressBookId}")
     public ResponseEntity<ResponseDTO> getAddressBookDataById(
             @PathVariable int addressBookDataId) {
@@ -47,6 +77,13 @@ public class AddressBookController {
         return new ResponseEntity<ResponseDTO>(responseDto, HttpStatus.OK);
     }
 
+    /**
+     * Purpose : This method is used to update the addressBook data corresponding to the id
+     *
+     * @param addressBookId defines the addressBook id
+     * @param addressBookDTO defines the data in DTO format
+     * @return message if data is updated successfully
+     */
     @PutMapping("/update/{addressBookId}")
     public ResponseEntity<String> updateAddressBookData(
             @PathVariable int addressBookId,
@@ -57,6 +94,12 @@ public class AddressBookController {
         return new ResponseEntity<>("Update AddressBook Data For", HttpStatus.OK);
     }
 
+    /**
+     * Purpose : This method is used to delete the addressBook details corresponding to it's id
+     *
+     * @param addressBookId defines addressBook id
+     * @return message if addressBook details of corresponding id is deleted successfully
+     */
     @DeleteMapping("/delete/{addressBookId}")
     public ResponseEntity<String> deleteAddressBookDataById(
             @PathVariable int addressBookId) {

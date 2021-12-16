@@ -11,6 +11,14 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Purpose : Implement swagger to handle the run application over server and also in other app
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {

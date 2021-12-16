@@ -4,6 +4,14 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * Purpose : To demonstrate all the fields of addressBook in the entity database format
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 @Data
 @Table(name="addressBook")
 @Entity

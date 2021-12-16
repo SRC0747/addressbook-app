@@ -5,6 +5,14 @@ import com.bridgelabz.addressbookapp.model.AddressBook;
 
 import java.util.List;
 
+/**
+ * Purpose : To implement all the methods of service class
+ *
+ * @author : Sampriti Roy Chowdhury
+ * @version : 0.0.1
+ * @since : 15-12-2021
+ */
+
 public interface IAddressBookService {
 
     public String addAddressDetails(AddressBookDTO addressBookDTO);
